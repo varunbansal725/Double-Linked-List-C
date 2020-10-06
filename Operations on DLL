@@ -5,7 +5,7 @@ struct Node {
     int data;
     struct Node *next;
     struct Node *prev;
-    }*first=NULL, *head=NULL;
+    }*first=NULL, *head=NULL, *third=NULL;
 
 void create(int arr[], int size) {
     struct Node *t, *last;
@@ -211,6 +211,17 @@ void copy_list(struct Node *p) {
     }
 }
 
+void concatenate(struct Node *p, struct Node *q) {
+    third=p;
+    if(p && q) {
+        while(p->next!=NULL)
+        p=p->next;
+    p->next=q;
+    q->prev=p;
+    q=NULL;
+    }
+}
+
 
 
 void main() {
@@ -240,4 +251,6 @@ void main() {
     display(first);
     copy_list(first);
     display(head);
+    concatenate(first, head);
+    display(third);
 }
